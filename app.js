@@ -3877,15 +3877,6 @@ function getProductVisual(product) {
 }
 
 
-    return `
-
-        <div class="product-placeholder">
-            ${getProductIcon(product.category)}
-        </div>
-
-    `;
-
-}
 
 function getProductIcon(category) {
 

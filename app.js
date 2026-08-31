@@ -2394,32 +2394,41 @@ function saveOrder(order) {
 
 function showOrderSuccess(order) {
 
-    $("#successOrderId").textContent =
-        order.orderId;
+    $("#successOrderId").textContent = order.orderId;
+    $("#successCustomerName").textContent = order.customerName;
+    $("#successTotal").textContent = formatPrice(order.total);
 
+    // تجهيز رسالة تفاصيل الأوردر لإرسالها عبر واتساب
+    let productsListText = order.products.map(p => `- ${p.name} (×${p.quantity}) : ${formatPrice(p.total)}`).join("\n");
+    
+    let whatsappMessage = `مرحباً ${CONFIG.storeName}، لقد قمت بطلب جديد:\n\n` +
+        `📦 *رقم الطلب:* ${order.orderId}\n` +
+        `👤 *الاسم:* ${order.customerName}\n` +
+        `📞 *الهاتف:* ${order.phone}\n` +
+        `📍 *العنوان:* ${order.address}\n\n` +
+        `*المنتجات المطلوبة:*\n${productsListText}\n\n` +
+        `💰 *الإجمالي النهائي:* ${formatPrice(order.total)}`;
 
-    $("#successCustomerName").textContent =
-        order.customerName;
+    let encodedMessage = encodeURIComponent(whatsappMessage);
+    let whatsappUrl = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodedMessage}`;
 
+    // ربط الحدث (Click) بزرار الواتساب الموجود في الـ HTML
+    const successWhatsAppBtn = $("#successWhatsApp");
+    if (successWhatsAppBtn) {
+        // بنشيل أي أحداث قديمة عشان ميتكرش الإرسال
+        const newBtn = successWhatsAppBtn.cloneNode(true);
+        successWhatsAppBtn.parentNode.replaceChild(newBtn, successWhatsAppBtn);
 
-    $("#successTotal").textContent =
-        formatPrice(order.total);
+        newBtn.addEventListener("click", () => {
+            window.open(whatsappUrl, "_blank");
+        });
+    }
 
-
-    $("#successModal")
-        ?.classList.add("active");
-
-
+    $("#successModal")?.classList.add("active");
     document.body.classList.add("modal-open");
 
-
-    showToast(
-        "تم إرسال الطلب بنجاح",
-        "success"
-    );
-
+    showToast("تم إرسال الطلب بنجاح", "success");
 }
-
 
 /* =========================================================
    ADMIN

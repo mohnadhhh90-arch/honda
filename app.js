@@ -2775,163 +2775,85 @@ function openEditProduct(productId) {
 
 }
 
+/* =========================================================
+   SAVE PRODUCT TO FIREBASE (ADD / UPDATE)
+========================================================= */
 
-function saveProductFromAdmin(event) {
-
+async function saveProductFromAdmin(event) {
     event.preventDefault();
 
+    const name = $("#adminProductName").value.trim();
+    const category = $("#adminProductCategory").value;
+    const price = Number($("#adminProductPrice").value);
+    const oldPrice = Number($("#adminProductOldPrice").value) || 0;
+    const stock = Number($("#adminProductStock").value);
+    const badge = $("#adminProductBadge").value;
+    const image = $("#adminProductImage").value.trim();
+    const description = $("#adminProductDescription").value.trim();
+    const specifications = $("#adminProductSpecs")
+        .value
+        .split("\n")
+        .map(item => item.trim())
+        .filter(Boolean);
 
-    const name =
-        $("#adminProductName").value.trim();
-
-    const category =
-        $("#adminProductCategory").value;
-
-    const price =
-        Number(
-            $("#adminProductPrice").value
-        );
-
-    const oldPrice =
-        Number(
-            $("#adminProductOldPrice").value
-        ) || 0;
-
-    const stock =
-        Number(
-            $("#adminProductStock").value
-        );
-
-    const badge =
-        $("#adminProductBadge").value;
-
-    const image =
-        $("#adminProductImage").value.trim();
-
-    const description =
-        $("#adminProductDescription").value.trim();
-
-    const specifications =
-        $("#adminProductSpecs")
-            .value
-            .split("\n")
-            .map(item => item.trim())
-            .filter(Boolean);
-
-
-    if (
-        !name ||
-        !price ||
-        stock < 0 ||
-        !description
-    ) {
-
-        showToast(
-            "راجع بيانات المنتج",
-            "error"
-        );
-
+    if (!name || !price || stock < 0 || !description) {
+        showToast("راجع بيانات المنتج", "error");
         return;
-
     }
 
-
-    if (editingProductId) {
-
-        const index =
-            products.findIndex(
-                item =>
-                    item.id ===
-                    editingProductId
-            );
-
-
-        if (index !== -1) {
-
-            products[index] = {
-
-                ...products[index],
-
+    try {
+        if (editingProductId) {
+            // 1. التعديل: البحث عن المستند في فايربيز وتحديثه
+            // بنبحث عن الـ Document ID اللي مطابق لـ editingProductId
+            const productData = {
                 name,
-
                 category,
-
                 price,
-
                 oldPrice,
-
                 stock,
-
                 badge,
-
                 image,
-
                 description,
-
                 specifications
-
             };
 
+            // لو الـ ID محتفظ بـ Firebase Document ID
+            await window.setDoc(window.doc(window.db, "products", editingProductId), productData, { merge: true });
+
+            showToast("تم تعديل المنتج بنجاح", "success");
+        } else {
+            // 2. الإضافة: إنشاء منتج جديد في كولكشن products
+            const newProduct = {
+                id: generateProductId(),
+                name,
+                category,
+                price,
+                oldPrice,
+                image,
+                badge,
+                stock,
+                description,
+                specifications,
+                createdAt: new Date().toISOString()
+            };
+
+            await window.addDoc(window.collection(window.db, "products"), newProduct);
+
+            showToast("تم إضافة المنتج بنجاح", "success");
         }
 
+        // إغلاق المودال وإعادة تحميل البيانات من سحابة فايربيز مباشرة
+        closeModal("#productAdminModal");
+        await renderAdmin(); // هتعمل fetch لكل المنتجات الجديدة من فايربيز وتعرضها
+        if (typeof renderProducts === "function") {
+            renderProducts();
+        }
 
-        showToast(
-            "تم تعديل المنتج",
-            "success"
-        );
-
-    } else {
-
-        const newProduct = {
-
-            id:
-                generateProductId(),
-
-            name,
-
-            category,
-
-            price,
-
-            oldPrice,
-
-            image,
-
-            badge,
-
-            stock,
-
-            description,
-
-            specifications
-
-        };
-
-
-        products.unshift(
-            newProduct
-        );
-
-
-        showToast(
-            "تم إضافة المنتج",
-            "success"
-        );
-
+    } catch (error) {
+        console.error("Error saving product to Firebase: ", error);
+        showToast("حدث خطأ أثناء الحفظ، جرب مرة أخرى", "error");
     }
-
-
-    saveProducts();
-
-    renderProducts();
-
-    renderAdmin();
-
-    closeModal("#productAdminModal");
-
 }
-
-
 /* =========================================================
    DELETE PRODUCT
 ========================================================= */

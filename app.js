@@ -123,26 +123,9 @@ const defaultProducts = [
             "وقت استجابة سريع",
             "مداخل متعددة HDMI / DP"
         ]
-    },
-
-    {
-        id: 6,
-        name: "Monitor",
-        category: "Monitors",
-        price: 8499,
-        oldPrice: 9499,
-        image: "assets/monitor.jpg",
-        badge: "NEW",
-        stock: 10,
-        description: "شال تحديث سريع.",
-        specifications: [
-            "حجم 27نية",
-            "معدل تحديث 165Hz",
-            "دقة Full HD",
-            "وقت استجابة سريع",
-            "مداخل متعددة HDMI / DP"
-        ]
     }
+
+   
 ];
 
 /* =========================================================

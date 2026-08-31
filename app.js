@@ -2470,27 +2470,34 @@ async function renderAdmin() {
 
 
 function renderAdminProducts() {
-    const table = $("#adminProductsTable");
 
-    if (!table) return;
+    const table =
+        $("#adminProductsTable");
 
-    if (!products.length) {
-        table.innerHTML = `
-            <tr>
-                <td
-                    colspan="6"
-                    class="admin-empty"
-                >
-                    مفيش منتجات حاليًا
-                </td>
-            </tr>
-        `;
-        return;
-    }
 
-    // هنا كود عرض المنتجات في الجدول (باقي الجدول زي ما هو عندك)
-}
+    if (!table) return;
 
+
+    if (!products.length) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="admin-empty"
+                >
+                    مفيش منتجات حاليًا
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
 
     table.innerHTML =
         products

@@ -36,32 +36,8 @@ const CONFIG = {
 ========================================================= */
 
 const defaultProducts = [
-
     {
         id: 1,
-        name: "iPhone 15",
-        category: "Mobiles",
-        price: 42999,
-        oldPrice: 45999,
-        image: "assets/iphone-15.jpg",
-        badge: "BEST",
-        stock: 12,
-
-        description:
-            "هاتف iPhone 15 بتصميم أنيق وأداء قوي يناسب الاستخدام اليومي والتصوير والألعاب.",
-
-        specifications: [
-            "شاشة Super Retina",
-            "سعة تخزين 128GB",
-            "كاميرا رئيسية 48MP",
-            "USB-C",
-            "أداء سريع وموثوق"
-        ]
-    },
-
-
-    {
-        id: 2,
         name: "Samsung Galaxy S25",
         category: "Mobiles",
         price: 38999,
@@ -69,10 +45,7 @@ const defaultProducts = [
         image: "assets/samsung-s25.jpg",
         badge: "NEW",
         stock: 8,
-
-        description:
-            "هاتف سامسونج الرائد بتجربة شاشة ممتازة وأداء قوي وكاميرات متطورة.",
-
+        description: "هاتف سامسونج الرائد بتجربة شاشة ممتازة وأداء قوي وكاميرات متطورة.",
         specifications: [
             "شاشة Dynamic AMOLED",
             "RAM 12GB",
@@ -81,33 +54,8 @@ const defaultProducts = [
             "بطارية قوية"
         ]
     },
-
-
     {
-        id: 3,
-        name: "Xiaomi Redmi Note",
-        category: "Mobiles",
-        price: 10999,
-        oldPrice: 11999,
-        image: "assets/xiaomi-note.jpg",
-        badge: "HOT",
-        stock: 20,
-
-        description:
-            "اختيار عملي واقتصادي بأداء ممتاز للاستخدام اليومي.",
-
-        specifications: [
-            "شاشة AMOLED",
-            "RAM 8GB",
-            "Storage 256GB",
-            "بطارية كبيرة",
-            "شحن سريع"
-        ]
-    },
-
-
-    {
-        id: 4,
+        id: 2,
         name: "4K PTZ Security Camera",
         category: "Cameras",
         price: 5499,
@@ -115,10 +63,7 @@ const defaultProducts = [
         image: "assets/ptz-camera.jpg",
         badge: "BEST",
         stock: 15,
-
-        description:
-            "كاميرا مراقبة PTZ بدقة 4K مناسبة للمنازل والمحال والشركات.",
-
+        description: "كاميرا مراقبة PTZ بدقة 4K مناسبة للمنازل والمحال والشركات.",
         specifications: [
             "دقة 4K",
             "تحكم PTZ",
@@ -127,193 +72,61 @@ const defaultProducts = [
             "تسجيل مستمر"
         ]
     },
-
-
+    {
+        id: 3,
+        name: "Lenovo LOQ Gaming Laptop",
+        category: "Laptops",
+        price: 34999,
+        oldPrice: 38999,
+        image: "assets/laptop.jpg",
+        badge: "HOT",
+        stock: 5,
+        description: "لابتوب ألعاب قوي ومناسب لبرمجة وتطوير البرمجيات والأداء العالي.",
+        specifications: [
+            "معالج قوي جداً",
+            "كارت شاشة منفصل",
+            "RAM 16GB",
+            "Storage 512GB SSD",
+            "شاشة عالية التردد"
+        ]
+    },
+    {
+        id: 4,
+        name: "Pro Gaming PC Rig",
+        category: "PC Builds",
+        price: 29999,
+        oldPrice: 32999,
+        image: "assets/pc-build.jpg",
+        badge: "SALE",
+        stock: 4,
+        description: "تجميعة بي سي احترافية مخصصة للألعاب الثقيلة وبرامج المونتاج.",
+        specifications: [
+            "تجميعة احترافية",
+            "تبريد هواء عالي الكفاءة",
+            "هيكل أنيق بإضاءة RGB",
+            "أداء فائق وثابت",
+            "جاهز للترقية"
+        ]
+    },
     {
         id: 5,
-        name: "Outdoor CCTV Camera",
-        category: "Cameras",
-        price: 1799,
-        oldPrice: 1999,
-        image: "assets/outdoor-camera.jpg",
-        badge: "SALE",
-        stock: 25,
-
-        description:
-            "كاميرا خارجية مقاومة للعوامل الجوية للمراقبة على مدار اليوم.",
-
-        specifications: [
-            "Full HD",
-            "رؤية ليلية",
-            "مقاومة للماء",
-            "Motion Detection",
-            "تركيب خارجي"
-        ]
-    },
-
-
-    {
-        id: 6,
-        name: "Indoor Dome Camera",
-        category: "Cameras",
-        price: 1399,
-        oldPrice: 1599,
-        image: "assets/dome-camera.jpg",
-        badge: "",
-        stock: 18,
-
-        description:
-            "كاميرا Dome داخلية بتصميم أنيق مناسبة للمكاتب والمنازل والمحلات.",
-
-        specifications: [
-            "Full HD",
-            "رؤية ليلية",
-            "تصميم Dome",
-            "Motion Detection",
-            "سهولة التركيب"
-        ]
-    },
-
-
-    {
-        id: 7,
-        name: "NVR Security Recorder",
-        category: "Cameras",
-        price: 4299,
-        oldPrice: 4699,
-        image: "assets/nvr.jpg",
+        name: "27 Inch Curved Gaming Monitor",
+        category: "Monitors",
+        price: 8499,
+        oldPrice: 9499,
+        image: "assets/monitor.jpg",
         badge: "NEW",
         stock: 10,
-
-        description:
-            "جهاز تسجيل مركزي لأنظمة كاميرات المراقبة مع دعم عدة كاميرات.",
-
+        description: "شاشة ألعاب منحنية توفر تجربة رؤية غامرة ومعدل تحديث سريع.",
         specifications: [
-            "دعم عدة كاميرات",
-            "تسجيل عالي الجودة",
-            "Remote Access",
-            "HDD Support",
-            "Network Ready"
-        ]
-    },
-
-
-    {
-        id: 8,
-        name: "Wireless Earbuds Pro",
-        category: "Accessories",
-        price: 1299,
-        oldPrice: 1599,
-        image: "assets/earbuds.jpg",
-        badge: "HOT",
-        stock: 30,
-
-        description:
-            "سماعات لاسلكية بتصميم مريح وصوت واضح للاستخدام اليومي.",
-
-        specifications: [
-            "Bluetooth",
-            "Microphone",
-            "Touch Control",
-            "Charging Case",
-            "Long Battery"
-        ]
-    },
-
-
-    {
-        id: 9,
-        name: "65W Fast Charger",
-        category: "Accessories",
-        price: 899,
-        oldPrice: 1099,
-        image: "assets/charger.jpg",
-        badge: "SALE",
-        stock: 40,
-
-        description:
-            "شاحن سريع بقدرة 65W مناسب للموبايلات والأجهزة المتوافقة.",
-
-        specifications: [
-            "65W Power",
-            "USB-C",
-            "Fast Charging",
-            "Safety Protection",
-            "Compact Design"
-        ]
-    },
-
-
-    {
-        id: 10,
-        name: "Power Bank 20000mAh",
-        category: "Accessories",
-        price: 1199,
-        oldPrice: 1399,
-        image: "assets/powerbank.jpg",
-        badge: "",
-        stock: 22,
-
-        description:
-            "باور بانك بسعة كبيرة مناسب للسفر والاستخدام اليومي.",
-
-        specifications: [
-            "20000mAh",
-            "Fast Charging",
-            "USB-C",
-            "Multiple Outputs",
-            "LED Indicator"
-        ]
-    },
-
-
-    {
-        id: 11,
-        name: "Smart Watch Pro",
-        category: "Smart Tech",
-        price: 2499,
-        oldPrice: 2899,
-        image: "assets/smartwatch.jpg",
-        badge: "NEW",
-        stock: 14,
-
-        description:
-            "ساعة ذكية بتصميم عصري ومجموعة من المميزات اليومية.",
-
-        specifications: [
-            "Touch Display",
-            "Bluetooth",
-            "Notifications",
-            "Activity Tracking",
-            "Long Battery"
-        ]
-    },
-
-
-    {
-        id: 12,
-        name: "Smart Home Camera",
-        category: "Smart Tech",
-        price: 1699,
-        oldPrice: 1999,
-        image: "assets/smart-camera.jpg",
-        badge: "BEST",
-        stock: 16,
-
-        description:
-            "كاميرا منزلية ذكية لمتابعة المكان من الموبايل بسهولة.",
-
-        specifications: [
-            "Full HD",
-            "Mobile App",
-            "Night Vision",
-            "Motion Detection",
-            "Two-Way Audio"
+            "حجم 27 بوصة منحنية",
+            "معدل تحديث 165Hz",
+            "دقة Full HD",
+            "وقت استجابة سريع",
+            "مداخل متعددة HDMI / DP"
         ]
     }
-
 ];
-
 
 /* =========================================================
    STATE

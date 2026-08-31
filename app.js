@@ -2507,19 +2507,24 @@ function setupAdmin() {
 
 }
 
+/* =========================================================
+   ADMIN SECURITY & ACCESS
+========================================================= */
 
 function handleAdminHash() {
-
-    if (
-        window.location.hash === "#admin"
-    ) {
-
-        openAdmin();
-
+    if (window.location.hash === "#admin") {
+        // نمنع فتح الـ Admin مباشرة ونطلب كلمة السر أولاً
+        let password = prompt("أدخل كلمة مرور لوحة التحكم:");
+        
+        // غير كلمة "1234" بأي كلمة سر قوية تحبها
+        if (password === "1234") { 
+            openAdmin();
+        } else {
+            showToast("كلمة المرور غير صحيحة!", "error");
+            closeAdmin(); // عشان يشيل الـ #admin من اللينك لو الباسورد غلط
+        }
     }
-
 }
-
 
 window.addEventListener(
     "hashchange",
@@ -2528,17 +2533,12 @@ window.addEventListener(
 
 
 function openAdmin() {
+    const admin = $("#adminOverlay");
+    if (!admin) return;
 
-    const admin =
-        $("#adminOverlay");
-
-
-    admin?.classList.add("active");
-
+    admin.classList.add("active");
     document.body.classList.add("admin-open");
-
     renderAdmin();
-
 }
 
 

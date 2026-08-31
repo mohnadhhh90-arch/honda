@@ -3876,8 +3876,6 @@ function getProductVisual(product) {
 
 }
 
-
-
 function getProductIcon(category) {
 
     const icons = {
@@ -3902,18 +3900,6 @@ function getProductIcon(category) {
     const icon =
         icons[category] ||
         "fa-box";
-
-    return `
-        <i class="fa-solid ${icon}"></i>
-    `;
-
-}
-
-
-    const icon =
-        icons[category] ||
-        "fa-box";
-
 
     return `
         <i class="fa-solid ${icon}"></i>
@@ -3992,7 +3978,6 @@ function escapeAttribute(value) {
     return escapeHTML(value);
 
 }
-
 
 /* =========================================================
    AUTO UPDATE PRODUCT STOCK IN CART

@@ -17,7 +17,7 @@ const CONFIG = {
     storeName: "AL WAFA TECH",
     version: "v2", // قم بزيادة رقم الإصدار (مثل v3, v4) كلما أردت فرض تحديث المنتجات تلقائياً
 
-    whatsappNumber: "Mohnadsharawe1",
+    whatsappNumber: "alwafatech76",
 
     currency: "ج.م",
 

@@ -9,26 +9,25 @@
 /* =========================================================
    CONFIG
 ========================================================= */
+/* =========================================================
+   CONFIG
+========================================================= */
+
 const CONFIG = {
     storeName: "AL WAFA TECH",
+    version: "v2", // قم بزيادة رقم الإصدار (مثل v3, v4) كلما أردت فرض تحديث المنتجات تلقائياً
 
-    /*
-      مهم:
-      غير الرقم ده لرقم واتساب المحل بصيغة دولية
-      مثال مصر:
-      2010XXXXXXXX
-    */
     whatsappNumber: "Mohnadsharawe1",
 
     currency: "ج.م",
 
     storage: {
+        version: "alwafa_app_version",
         products: "alwafa_products",
         cart: "alwafa_cart",
         orders: "alwafa_orders"
     }
 };
-
 
 /* =========================================================
    DEMO PRODUCTS
@@ -189,8 +188,14 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =========================================================
    STORAGE
 ========================================================= */
+/* =========================================================
+   STORAGE
+========================================================= */
 
 function initializeStorage() {
+
+    const currentVersion = CONFIG.version;
+    const storedVersion = localStorage.getItem(CONFIG.storage.version);
 
     const storedProducts =
         localStorage.getItem(CONFIG.storage.products);
@@ -202,11 +207,17 @@ function initializeStorage() {
         localStorage.getItem(CONFIG.storage.orders);
 
 
-    if (!storedProducts) {
+    // لو الإصدار اتغير، أو مفيش منتجات مخزنة من الأساس، يتم تحديث القائمة فوراً
+    if (storedVersion !== currentVersion || !storedProducts) {
 
         localStorage.setItem(
             CONFIG.storage.products,
             JSON.stringify(defaultProducts)
+        );
+
+        localStorage.setItem(
+            CONFIG.storage.version,
+            currentVersion
         );
 
     }

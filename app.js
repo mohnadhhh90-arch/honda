@@ -211,36 +211,47 @@ document.addEventListener("DOMContentLoaded", () => {
    STORAGE
 ========================================================= */
 
-function initializeStorage() {
+/* =========================================================
+   STORAGE (Smart Update & Admin Safe)
+========================================================= */
 
+function initializeStorage() {
     const currentVersion = CONFIG.version;
     const storedVersion = localStorage.getItem(CONFIG.storage.version);
 
-    const storedProducts =
-        localStorage.getItem(CONFIG.storage.products);
+    let storedProducts = JSON.parse(localStorage.getItem(CONFIG.storage.products));
 
-    const storedCart =
-        localStorage.getItem(CONFIG.storage.cart);
+    // لو دي أول مرة يفتح الموقع أو مفيش منتجات خالص
+    if (!storedProducts) {
+        localStorage.setItem(CONFIG.storage.products, JSON.stringify(defaultProducts));
+        localStorage.setItem(CONFIG.storage.version, currentVersion);
+    } 
+    // لو الإصدار اتغير (يعني أنت ضفت منتجات جديدة في الكود وعاوز تنزلها للزوار والأدمن)
+    else if (storedVersion !== currentVersion) {
+        // بنمشي على المنتجات الجديدة اللي في الكود (defaultProducts)
+        defaultProducts.forEach(newProduct => {
+            // هل المنتج ده مش موجود أصلاً في الـ localStorage (بناءً على الـ ID)؟
+            const exists = storedProducts.some(p => p.id === newProduct.id);
+            if (!exists) {
+                // لو مش موجود، بنضيفه للقائمة من غير ما نلمس ولا نمسح منتجات الأدمن أو المنتجات القديمة
+                storedProducts.push(newProduct);
+            }
+        });
 
-    const storedOrders =
-        localStorage.getItem(CONFIG.storage.orders);
-
-
-    // لو الإصدار اتغير، أو مفيش منتجات مخزنة من الأساس، يتم تحديث القائمة فوراً
-    if (storedVersion !== currentVersion || !storedProducts) {
-
-        localStorage.setItem(
-            CONFIG.storage.products,
-            JSON.stringify(defaultProducts)
-        );
-
-        localStorage.setItem(
-            CONFIG.storage.version,
-            currentVersion
-        );
-
+        // نحفظ القائمة المدمجة الجديدة ونحدث الإصدار
+        localStorage.setItem(CONFIG.storage.products, JSON.stringify(storedProducts));
+        localStorage.setItem(CONFIG.storage.version, currentVersion);
     }
 
+    // التأكد من وجود سلة المشتريات والطلبات
+    if (!localStorage.getItem(CONFIG.storage.cart)) {
+        localStorage.setItem(CONFIG.storage.cart, JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem(CONFIG.storage.orders)) {
+        localStorage.setItem(CONFIG.storage.orders, JSON.stringify([]));
+    }
+}
 
     if (!storedCart) {
 

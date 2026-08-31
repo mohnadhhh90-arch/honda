@@ -9,7 +9,6 @@
 /* =========================================================
    CONFIG
 ========================================================= */
-
 const CONFIG = {
     storeName: "AL WAFA TECH",
 
@@ -3786,14 +3785,16 @@ function getArabicCategory(category) {
         Cameras:
             "كاميرات",
 
-        Accessories:
-            "إكسسوارات",
+        Laptops:
+            "لابتوب",
 
-        "Smart Tech":
-            "Smart Tech"
+        "PC Builds":
+            "تجميعات PC",
+
+        Monitors:
+            "شاشات"
 
     };
-
 
     return (
         categories[category] ||
@@ -3877,7 +3878,6 @@ function getProductVisual(product) {
 
 }
 
-
 function getProductIcon(category) {
 
     const icons = {
@@ -3886,15 +3886,28 @@ function getProductIcon(category) {
             "fa-mobile-screen-button",
 
         Cameras:
-            "fa-camera",
+            "fa-video",
 
-        Accessories:
-            "fa-headphones",
+        Laptops:
+            "fa-laptop",
 
-        "Smart Tech":
-            "fa-microchip"
+        "PC Builds":
+            "fa-computer",
+
+        Monitors:
+            "fa-tv"
 
     };
+
+    const icon =
+        icons[category] ||
+        "fa-box";
+
+    return `
+        <i class="fa-solid ${icon}"></i>
+    `;
+
+}
 
 
     const icon =

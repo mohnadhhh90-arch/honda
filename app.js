@@ -19,7 +19,7 @@ const CONFIG = {
       مثال مصر:
       2010XXXXXXXX
     */
-    whatsappNumber: "201150653850",
+    whatsappNumber: "01150653850",
 
     currency: "ج.م",
 

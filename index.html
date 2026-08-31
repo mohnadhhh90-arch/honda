@@ -1183,7 +1183,12 @@
 
 
     <!-- Main JavaScript -->
-    <script src="app.js"></script>
+    <!-- استدعاء إعدادات فايربيز أولاً -->
+<script type="module" src="firebase-config.js"></script>
+
+<!-- بعده ملف الكود الرئيسي للموقع -->
+<script src="app.js"></script>
+ 
 
 </body>
 </html>

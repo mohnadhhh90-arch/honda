@@ -3774,7 +3774,6 @@ function generateProductId() {
 
 }
 
-
 function getArabicCategory(category) {
 
     const categories = {
@@ -3865,7 +3864,17 @@ function getProductVisual(product) {
 
         `;
 
+    } else {
+
+        return `
+            <div class="product-placeholder">
+                ${getProductIcon(product.category)}
+            </div>
+        `;
+
     }
+
+}
 
 
     return `

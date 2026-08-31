@@ -185,6 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
 /* =========================================================
    STORAGE (Smart Update & Admin Safe)
 ========================================================= */
+/* =========================================================
+   STORAGE (Smart Update & Admin Safe)
+========================================================= */
 
 function initializeStorage() {
     const currentVersion = CONFIG.version;
@@ -199,22 +202,18 @@ function initializeStorage() {
     } 
     // لو الإصدار اتغير (يعني أنت ضفت منتجات جديدة في الكود وعاوز تنزلها للزوار والأدمن)
     else if (storedVersion !== currentVersion) {
-        // بنمشي على المنتجات الجديدة اللي في الكود (defaultProducts)
         defaultProducts.forEach(newProduct => {
-            // هل المنتج ده مش موجود أصلاً في الـ localStorage (بناءً على الـ ID)؟
             const exists = storedProducts.some(p => p.id === newProduct.id);
             if (!exists) {
-                // لو مش موجود، بنضيفه للقائمة من غير ما نلمس ولا نمسح منتجات الأدمن أو المنتجات القديمة
                 storedProducts.push(newProduct);
             }
         });
 
-        // نحفظ القائمة المدمجة الجديدة ونحدث الإصدار
         localStorage.setItem(CONFIG.storage.products, JSON.stringify(storedProducts));
         localStorage.setItem(CONFIG.storage.version, currentVersion);
     }
 
-    // التأكد من وجود سلة المشتريات والطلبات
+    // التأكد من وجود سلة المشتريات والطلبات بطريقة سليمة
     if (!localStorage.getItem(CONFIG.storage.cart)) {
         localStorage.setItem(CONFIG.storage.cart, JSON.stringify([]));
     }
@@ -223,18 +222,6 @@ function initializeStorage() {
         localStorage.setItem(CONFIG.storage.orders, JSON.stringify([]));
     }
 }
-
-
-    if (!storedOrders) {
-
-        localStorage.setItem(
-            CONFIG.storage.orders,
-            JSON.stringify([])
-        );
-
-    }
-
-
 
 
 function loadData() {

@@ -126,7 +126,7 @@ const defaultProducts = [
     },
 
     {
-        id: 5,
+        id: 6,
         name: "Monitor",
         category: "Monitors",
         price: 8499,

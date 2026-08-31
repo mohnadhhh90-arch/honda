@@ -1,6 +1,6 @@
 /* =========================================================
    AL WAFA TECH
-   Premium Dark Luxury Tech
+   Premium White & Sky Blue Tech
    Main Stylesheet
 ========================================================= */
 
@@ -21,19 +21,19 @@
     --white: #ffffff;
     --white-soft: #eeeeee;
 
-    --gold: #a57110;
-    --gold-light: #dfc27c;
-    --gold-dark: #9d7b3d;
+    --sky: #00b4d8;
+    --sky-light: #90e0ef;
+    --sky-dark: #0077b6;
 
     --success: #3fcf8e;
     --danger: #e45d5d;
     --warning: #e6ad52;
 
     --border: rgba(255, 255, 255, 0.08);
-    --border-gold: rgba(200, 164, 93, 0.35);
+    --border-sky: rgba(0, 180, 216, 0.35);
 
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-    --shadow-gold: 0 15px 40px rgba(200, 164, 93, 0.12);
+    --shadow-sky: 0 15px 40px rgba(0, 180, 216, 0.12);
 
     --radius-sm: 8px;
     --radius-md: 14px;
@@ -125,7 +125,7 @@ ul {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-dark);
+    background: var(--sky-dark);
 }
 
 
@@ -134,7 +134,7 @@ ul {
 ========================================================= */
 
 ::selection {
-    background: var(--gold);
+    background: var(--sky);
     color: var(--black);
 }
 
@@ -161,12 +161,12 @@ ul {
 }
 
 .announcement-content i {
-    color: var(--gold);
+    color: var(--sky);
     margin-left: 6px;
 }
 
 .announcement-trust {
-    color: var(--gold-light);
+    color: var(--sky-light);
 }
 
 
@@ -234,7 +234,7 @@ ul {
     bottom: 0;
     width: 0;
     height: 2px;
-    background: var(--gold);
+    background: var(--sky);
     transition: var(--transition);
 }
 
@@ -278,9 +278,9 @@ ul {
 .icon-btn:hover,
 .cart-btn:hover,
 .mobile-menu-btn:hover {
-    color: var(--gold-light);
-    border-color: var(--border-gold);
-    background: rgba(200, 164, 93, 0.08);
+    color: var(--sky-light);
+    border-color: var(--border-sky);
+    background: rgba(0, 180, 216, 0.08);
 }
 
 .cart-btn {
@@ -298,7 +298,7 @@ ul {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background: var(--gold);
+    background: var(--sky);
     color: var(--black);
     font-size: 10px;
     font-weight: 800;
@@ -337,7 +337,7 @@ ul {
 }
 
 .search-box > i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .search-box input {
@@ -391,7 +391,7 @@ ul {
 }
 
 .mobile-menu > a:hover {
-    color: var(--gold-light);
+    color: var(--sky-light);
 }
 
 .mobile-whatsapp {
@@ -422,7 +422,7 @@ ul {
     background:
         radial-gradient(
             circle at 78% 45%,
-            rgba(200, 164, 93, 0.13),
+            rgba(0, 180, 216, 0.13),
             transparent 28%
         ),
         radial-gradient(
@@ -467,7 +467,7 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -477,9 +477,9 @@ ul {
 .label-dot {
     width: 7px;
     height: 7px;
-    background: var(--gold);
+    background: var(--sky);
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(200, 164, 93, 0.7);
+    box-shadow: 0 0 15px rgba(0, 180, 216, 0.7);
 }
 
 .hero h1 {
@@ -495,7 +495,7 @@ ul {
 .about-content h2 span,
 .contact-box h2 span,
 .promo-content h2 span {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .hero-text > p {
@@ -528,15 +528,15 @@ ul {
 }
 
 .btn-primary {
-    background: var(--gold);
+    background: var(--sky);
     color: var(--black);
-    box-shadow: var(--shadow-gold);
+    box-shadow: var(--shadow-sky);
 }
 
 .btn-primary:hover {
-    background: var(--gold-light);
+    background: var(--sky-light);
     transform: translateY(-2px);
-    box-shadow: 0 18px 45px rgba(200, 164, 93, 0.2);
+    box-shadow: 0 18px 45px rgba(0, 180, 216, 0.2);
 }
 
 .btn-secondary {
@@ -546,8 +546,8 @@ ul {
 }
 
 .btn-secondary:hover {
-    border-color: var(--border-gold);
-    color: var(--gold-light);
+    border-color: var(--border-sky);
+    color: var(--sky-light);
     transform: translateY(-2px);
 }
 
@@ -567,7 +567,7 @@ ul {
 }
 
 .trust-item i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 
@@ -587,7 +587,7 @@ ul {
     position: absolute;
     width: 360px;
     height: 360px;
-    background: rgba(200, 164, 93, 0.1);
+    background: rgba(0, 180, 216, 0.1);
     filter: blur(70px);
     border-radius: 50%;
 }
@@ -617,7 +617,7 @@ ul {
     content: "";
     position: absolute;
     inset: 18px;
-    border: 1px solid rgba(200,164,93,0.12);
+    border: 1px solid rgba(0,180,216,0.12);
     border-radius: 25px;
 }
 
@@ -655,7 +655,7 @@ ul {
     background:
         radial-gradient(
             circle at 50% 35%,
-            rgba(200,164,93,0.25),
+            rgba(0,180,216,0.25),
             transparent 32%
         ),
         linear-gradient(145deg, #151515, #050505);
@@ -668,7 +668,7 @@ ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--gold-light);
+    color: var(--sky-light);
     letter-spacing: 3px;
     font-size: 11px;
 }
@@ -685,7 +685,7 @@ ul {
     padding: 9px 14px;
     background: rgba(15,15,15,0.92);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--border-gold);
+    border: 1px solid var(--border-sky);
     border-radius: 9px;
     color: var(--white);
     font-size: 11px;
@@ -693,7 +693,7 @@ ul {
 }
 
 .floating-tag i {
-    color: var(--gold);
+    color: var(--sky);
     margin-left: 5px;
 }
 
@@ -780,8 +780,8 @@ ul {
 
 .category-card:hover {
     transform: translateY(-7px);
-    border-color: var(--border-gold);
-    box-shadow: var(--shadow-gold);
+    border-color: var(--border-sky);
+    box-shadow: var(--shadow-sky);
 }
 
 .category-image {
@@ -808,20 +808,20 @@ ul {
     position: relative;
     z-index: 1;
     font-size: 72px;
-    color: rgba(200,164,93,0.75);
+    color: rgba(0,180,216,0.75);
     transition: var(--transition);
 }
 
 .category-card:hover .category-image i {
     transform: scale(1.1);
-    color: var(--gold-light);
+    color: var(--sky-light);
 }
 
 .mobile-category {
     background:
         radial-gradient(
             circle,
-            rgba(200,164,93,0.13),
+            rgba(0,180,216,0.13),
             transparent 60%
         ),
         #101010;
@@ -841,7 +841,7 @@ ul {
     background:
         radial-gradient(
             circle,
-            rgba(200,164,93,0.1),
+            rgba(0,180,216,0.1),
             transparent 60%
         ),
         #101010;
@@ -864,7 +864,7 @@ ul {
 }
 
 .category-info > span {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 10px;
 }
 
@@ -884,7 +884,7 @@ ul {
     position: absolute;
     left: 20px;
     bottom: 24px;
-    color: var(--gold);
+    color: var(--sky);
     transition: var(--transition);
 }
 
@@ -905,7 +905,7 @@ ul {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 12px;
     font-weight: 700;
     transition: var(--transition);
@@ -936,8 +936,8 @@ ul {
 .filter-btn:hover,
 .filter-btn.active {
     color: var(--black);
-    background: var(--gold);
-    border-color: var(--gold);
+    background: var(--sky);
+    border-color: var(--sky);
 }
 
 
@@ -962,7 +962,7 @@ ul {
 
 .product-card:hover {
     transform: translateY(-6px);
-    border-color: var(--border-gold);
+    border-color: var(--border-sky);
     box-shadow: var(--shadow);
 }
 
@@ -976,7 +976,7 @@ ul {
     background:
         radial-gradient(
             circle at center,
-            rgba(200,164,93,0.08),
+            rgba(0,180,216,0.08),
             transparent 65%
         ),
         #151515;
@@ -1003,7 +1003,7 @@ ul {
 
 .product-placeholder i {
     font-size: 72px;
-    color: rgba(200,164,93,0.6);
+    color: rgba(0,180,216,0.6);
 }
 
 .product-badge {
@@ -1013,7 +1013,7 @@ ul {
     z-index: 2;
     padding: 5px 9px;
     border-radius: 6px;
-    background: var(--gold);
+    background: var(--sky);
     color: var(--black);
     font-size: 9px;
     font-weight: 800;
@@ -1024,7 +1024,7 @@ ul {
 }
 
 .product-category {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 10px;
     font-weight: 700;
 }
@@ -1052,7 +1052,7 @@ ul {
 }
 
 .product-price {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 18px;
     font-weight: 800;
 }
@@ -1080,13 +1080,13 @@ ul {
 }
 
 .add-cart-btn {
-    border: 1px solid var(--gold);
-    background: var(--gold);
+    border: 1px solid var(--sky);
+    background: var(--sky);
     color: var(--black);
 }
 
 .add-cart-btn:hover {
-    background: var(--gold-light);
+    background: var(--sky-light);
 }
 
 .details-btn {
@@ -1096,8 +1096,8 @@ ul {
 }
 
 .details-btn:hover {
-    border-color: var(--border-gold);
-    color: var(--gold-light);
+    border-color: var(--border-sky);
+    color: var(--sky-light);
 }
 
 
@@ -1125,8 +1125,8 @@ ul {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(200,164,93,0.08);
-    color: var(--gold);
+    background: rgba(0,180,216,0.08);
+    color: var(--sky);
     font-size: 24px;
 }
 
@@ -1160,7 +1160,7 @@ ul {
     background:
         radial-gradient(
             circle at 85% 50%,
-            rgba(200,164,93,0.16),
+            rgba(0,180,216,0.16),
             transparent 35%
         ),
         linear-gradient(
@@ -1168,7 +1168,7 @@ ul {
             #151515,
             #090909
         );
-    border: 1px solid var(--border-gold);
+    border: 1px solid var(--border-sky);
     border-radius: 24px;
 }
 
@@ -1179,7 +1179,7 @@ ul {
 }
 
 .promo-label {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 3px;
@@ -1209,7 +1209,7 @@ ul {
 
 .promo-circle {
     position: absolute;
-    border: 1px solid rgba(200,164,93,0.16);
+    border: 1px solid rgba(0,180,216,0.16);
     border-radius: 50%;
 }
 
@@ -1233,7 +1233,7 @@ ul {
     top: 50%;
     width: 260px;
     height: 1px;
-    background: rgba(200,164,93,0.18);
+    background: rgba(0,180,216,0.18);
     transform: rotate(-35deg);
 }
 
@@ -1244,7 +1244,7 @@ ul {
     left: 0;
     width: 100%;
     height: 1px;
-    background: rgba(200,164,93,0.12);
+    background: rgba(0,180,216,0.12);
 }
 
 .promo-lines::before {
@@ -1277,7 +1277,7 @@ ul {
 
 .why-card:hover {
     transform: translateY(-5px);
-    border-color: var(--border-gold);
+    border-color: var(--border-sky);
 }
 
 .why-icon {
@@ -1286,10 +1286,10 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(200,164,93,0.08);
-    border: 1px solid rgba(200,164,93,0.18);
+    background: rgba(0,180,216,0.08);
+    border: 1px solid rgba(0,180,216,0.18);
     border-radius: 12px;
-    color: var(--gold);
+    color: var(--sky);
     font-size: 19px;
 }
 
@@ -1337,7 +1337,7 @@ ul {
     background:
         radial-gradient(
             circle,
-            rgba(200,164,93,0.11),
+            rgba(0,180,216,0.11),
             transparent 60%
         ),
         #0d0d0d;
@@ -1350,7 +1350,7 @@ ul {
     position: absolute;
     width: 250px;
     height: 250px;
-    border: 1px solid rgba(200,164,93,0.15);
+    border: 1px solid rgba(0,180,216,0.15);
     border-radius: 50%;
 }
 
@@ -1403,7 +1403,7 @@ ul {
 }
 
 .about-stats strong {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 25px;
 }
 
@@ -1432,10 +1432,10 @@ ul {
     background:
         linear-gradient(
             135deg,
-            rgba(200,164,93,0.08),
+            rgba(0,180,216,0.08),
             rgba(255,255,255,0.02)
         );
-    border: 1px solid var(--border-gold);
+    border: 1px solid var(--border-sky);
     border-radius: 20px;
 }
 
@@ -1509,8 +1509,8 @@ ul {
 }
 
 .social-links a:hover {
-    color: var(--gold);
-    border-color: var(--border-gold);
+    color: var(--sky);
+    border-color: var(--border-sky);
     transform: translateY(-2px);
 }
 
@@ -1537,11 +1537,11 @@ ul {
 }
 
 .footer-column a:hover {
-    color: var(--gold-light);
+    color: var(--sky-light);
 }
 
 .footer-column i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .footer-bottom {
@@ -1557,7 +1557,7 @@ ul {
 }
 
 .footer-bottom i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 
@@ -1644,8 +1644,8 @@ ul {
 
 .close-btn:hover,
 .modal-close:hover {
-    color: var(--gold);
-    border-color: var(--border-gold);
+    color: var(--sky);
+    border-color: var(--border-sky);
 }
 
 .cart-body {
@@ -1665,7 +1665,7 @@ ul {
 
 .cart-empty i {
     margin-bottom: 17px;
-    color: var(--gold);
+    color: var(--sky);
     font-size: 42px;
 }
 
@@ -1706,7 +1706,7 @@ ul {
 }
 
 .cart-item-image i {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 25px;
 }
 
@@ -1717,7 +1717,7 @@ ul {
 
 .cart-item-price {
     margin-top: 4px;
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 12px;
     font-weight: 700;
 }
@@ -1739,8 +1739,8 @@ ul {
 }
 
 .qty-btn:hover {
-    color: var(--gold);
-    border-color: var(--border-gold);
+    color: var(--sky);
+    border-color: var(--border-sky);
 }
 
 .qty-value {
@@ -1782,7 +1782,7 @@ ul {
 }
 
 .cart-total strong {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 21px;
 }
 
@@ -1800,7 +1800,7 @@ ul {
 }
 
 .continue-shopping:hover {
-    color: var(--gold-light);
+    color: var(--sky-light);
 }
 
 
@@ -1874,7 +1874,7 @@ ul {
     background:
         radial-gradient(
             circle,
-            rgba(200,164,93,0.1),
+            rgba(0,180,216,0.1),
             transparent 60%
         ),
         #101010;
@@ -1887,7 +1887,7 @@ ul {
 }
 
 .modal-product-image i {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 100px;
 }
 
@@ -1896,7 +1896,7 @@ ul {
 }
 
 .modal-product-category {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 11px;
     font-weight: 700;
 }
@@ -1921,7 +1921,7 @@ ul {
 }
 
 .modal-price strong {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 28px;
 }
 
@@ -1959,7 +1959,7 @@ ul {
     top: 11px;
     width: 5px;
     height: 5px;
-    background: var(--gold);
+    background: var(--sky);
     border-radius: 50%;
 }
 
@@ -2021,7 +2021,7 @@ ul {
 }
 
 .checkout-header h2 span {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .checkout-header p {
@@ -2072,8 +2072,8 @@ ul {
 }
 
 .input-wrapper:focus-within {
-    border-color: var(--border-gold);
-    box-shadow: 0 0 0 3px rgba(200,164,93,0.05);
+    border-color: var(--border-sky);
+    box-shadow: 0 0 0 3px rgba(0,180,216,0.05);
 }
 
 .input-wrapper i {
@@ -2170,7 +2170,7 @@ ul {
 }
 
 .summary-product-image i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .summary-product h4 {
@@ -2183,7 +2183,7 @@ ul {
 }
 
 .summary-product strong {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 10px;
 }
 
@@ -2200,7 +2200,7 @@ ul {
 }
 
 .summary-total strong {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 21px;
 }
 
@@ -2209,8 +2209,8 @@ ul {
     gap: 8px;
     margin-top: 18px;
     padding: 11px;
-    background: rgba(200,164,93,0.05);
-    border: 1px solid rgba(200,164,93,0.12);
+    background: rgba(0,180,216,0.05);
+    border: 1px solid rgba(0,180,216,0.12);
     border-radius: 8px;
     color: var(--gray);
     font-size: 9px;
@@ -2218,7 +2218,7 @@ ul {
 }
 
 .order-note i {
-    color: var(--gold);
+    color: var(--sky);
     padding-top: 2px;
 }
 
@@ -2258,7 +2258,7 @@ ul {
 }
 
 .success-modal h2 span {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .success-modal > p {
@@ -2284,7 +2284,7 @@ ul {
 .order-number-box strong {
     display: block;
     margin-top: 3px;
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 18px;
 }
 
@@ -2369,8 +2369,8 @@ ul {
 }
 
 .admin-back-btn:hover {
-    color: var(--gold);
-    border-color: var(--border-gold);
+    color: var(--sky);
+    border-color: var(--border-sky);
 }
 
 .admin-title {
@@ -2379,7 +2379,7 @@ ul {
 }
 
 .admin-title span {
-    color: var(--gold);
+    color: var(--sky);
     font-size: 9px;
     letter-spacing: 2px;
 }
@@ -2438,7 +2438,7 @@ ul {
 
 .admin-stat strong {
     margin-top: 4px;
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-size: 32px;
 }
 
@@ -2448,8 +2448,8 @@ ul {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(200,164,93,0.08);
-    color: var(--gold);
+    background: rgba(0,180,216,0.08);
+    color: var(--sky);
     border-radius: 12px;
 }
 
@@ -2470,8 +2470,8 @@ ul {
 }
 
 .admin-tab.active {
-    color: var(--gold-light);
-    border-color: var(--gold);
+    color: var(--sky-light);
+    border-color: var(--sky);
 }
 
 .admin-panel {
@@ -2497,7 +2497,7 @@ ul {
 }
 
 .admin-panel-header h2 span {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 
@@ -2560,7 +2560,7 @@ ul {
 }
 
 .admin-product-thumb i {
-    color: var(--gold);
+    color: var(--sky);
 }
 
 .stock-good {
@@ -2599,8 +2599,8 @@ ul {
 }
 
 .admin-action-btn:hover {
-    color: var(--gold);
-    border-color: var(--border-gold);
+    color: var(--sky);
+    border-color: var(--border-sky);
 }
 
 .admin-action-btn.delete:hover {
@@ -2634,7 +2634,7 @@ ul {
 }
 
 .admin-order-id {
-    color: var(--gold-light);
+    color: var(--sky-light);
     font-weight: 800;
     font-size: 13px;
 }
@@ -2746,7 +2746,7 @@ ul {
 #adminProductForm input:focus,
 #adminProductForm textarea:focus,
 #adminProductForm select:focus {
-    border-color: var(--border-gold);
+    border-color: var(--border-sky);
 }
 
 .admin-submit-btn {
@@ -2854,7 +2854,7 @@ ul {
     justify-content: center;
     border: 1px solid var(--border);
     background: #111;
-    color: var(--gold);
+    color: var(--sky);
     border-radius: 50%;
     opacity: 0;
     visibility: hidden;
@@ -2869,8 +2869,8 @@ ul {
 }
 
 .scroll-top:hover {
-    border-color: var(--border-gold);
-    background: var(--gold);
+    border-color: var(--border-sky);
+    background: var(--sky);
     color: var(--black);
 }
 
@@ -3398,3 +3398,4 @@ ul {
     }
 
 }
+

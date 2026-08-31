@@ -2857,58 +2857,64 @@ async function saveProductFromAdmin(event) {
 /* =========================================================
    DELETE PRODUCT
 ========================================================= */
+/* =========================================================
+   DELETE PRODUCT FROM FIREBASE
+========================================================= */
 
-function deleteProduct(productId) {
-
-    const product =
-        products.find(
-            item => item.id === productId
-        );
-
+async function deleteProduct(productId) {
+    const product = products.find(
+        item => item.id === productId
+    );
 
     if (!product) return;
 
-
-    const confirmed =
-        window.confirm(
-            `هل أنت متأكد إنك عايز تحذف "${product.name}"؟`
-        );
-
+    const confirmed = window.confirm(
+        `هل أنت متأكد إنك عايز تحذف "${product.name}"؟`
+    );
 
     if (!confirmed) return;
 
+    try {
+        // 1. لو المنتج ليه Firebase Document ID مباشر، بنحذفه بيه
+        // أو بنبحث عن المستند اللي فيه الـ id الخاص بالمنتج ونحذفه
+        const querySnapshot = await window.getDocs(window.collection(window.db, "products"));
+        let firebaseDocId = null;
+        
+        querySnapshot.forEach((docSnap) => {
+            const data = docSnap.data();
+            if (data.id === productId || docSnap.id === productId) {
+                firebaseDocId = docSnap.id;
+            }
+        });
 
-    products =
-        products.filter(
+        if (firebaseDocId) {
+            await window.deleteDoc(window.doc(window.db, "products", firebaseDocId));
+        }
+
+        // 2. التحديث المحلي وإزالة المنتج من العربة والواجهة
+        products = products.filter(
             item => item.id !== productId
         );
 
-
-    cart =
-        cart.filter(
+        cart = cart.filter(
             item => item.productId !== productId
         );
 
+        saveCart();
+        renderProducts();
+        renderCart();
+        await renderAdmin(); // إعادة جلب المنتجات والطلبات المحدثة من الفايربيز
 
-    saveProducts();
+        showToast(
+            "تم حذف المنتج بنجاح",
+            "success"
+        );
 
-    saveCart();
-
-    renderProducts();
-
-    renderCart();
-
-    renderAdmin();
-
-
-    showToast(
-        "تم حذف المنتج",
-        "success"
-    );
-
+    } catch (error) {
+        console.error("Error deleting product from Firebase: ", error);
+        showToast("حدث خطأ أثناء حذف المنتج", "error");
+    }
 }
-
-
 /* =========================================================
    ADMIN ORDERS
 ========================================================= */

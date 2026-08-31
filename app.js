@@ -2437,35 +2437,59 @@ function updateAdminNewOrders() {
    ADMIN PRODUCTS
 ========================================================= */
 
+/* =========================================================
+   ADMIN RENDER & PRODUCTS FROM FIREBASE
+========================================================= */
+
+async function renderAdmin() {
+    try {
+        // 1. جلب الطلبات من سحابة Firebase
+        const ordersSnapshot = await window.getDocs(window.collection(window.db, "orders"));
+        orders = [];
+        ordersSnapshot.forEach((doc) => {
+            orders.push({ id: doc.id, ...doc.data() });
+        });
+
+        // 2. جلب المنتجات من سحابة Firebase
+        const productsSnapshot = await window.getDocs(window.collection(window.db, "products"));
+        products = [];
+        productsSnapshot.forEach((doc) => {
+            products.push({ id: doc.id, ...doc.data() });
+        });
+
+    } catch (error) {
+        console.error("Error fetching data from Firebase: ", error);
+    }
+
+    renderAdminStats();
+    renderAdminProducts();
+    renderAdminOrders();
+    renderAdminOrdersPreview();
+    updateAdminNewOrders();
+}
+
+
 function renderAdminProducts() {
-
-    const table =
-        $("#adminProductsTable");
-
+    const table = $("#adminProductsTable");
 
     if (!table) return;
 
-
     if (!products.length) {
-
         table.innerHTML = `
-
             <tr>
-
                 <td
                     colspan="6"
                     class="admin-empty"
                 >
                     مفيش منتجات حاليًا
                 </td>
-
             </tr>
-
         `;
-
         return;
-
     }
+
+    // هنا كود عرض المنتجات في الجدول (باقي الجدول زي ما هو عندك)
+}
 
 
     table.innerHTML =

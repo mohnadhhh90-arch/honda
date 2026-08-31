@@ -142,7 +142,6 @@ let searchTerm = "";
 let currentProductId = null;
 let editingProductId = null;
 
-
 /* =========================================================
    DOM ELEMENTS
 ========================================================= */
@@ -157,7 +156,6 @@ const $$ = (selector) => document.querySelectorAll(selector);
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
     initializeStorage();
 
     loadData();
@@ -175,24 +173,14 @@ document.addEventListener("DOMContentLoaded", () => {
     handleAdminHash();
 
     setTimeout(() => {
-
         const loader = $("#pageLoader");
 
         if (loader) {
             loader.classList.add("hidden");
         }
-
     }, 700);
-
 });
 
-
-/* =========================================================
-   STORAGE
-========================================================= */
-/* =========================================================
-   STORAGE
-========================================================= */
 
 /* =========================================================
    STORAGE (Smart Update & Admin Safe)
@@ -236,15 +224,6 @@ function initializeStorage() {
     }
 }
 
-    if (!storedCart) {
-
-        localStorage.setItem(
-            CONFIG.storage.cart,
-            JSON.stringify([])
-        );
-
-    }
-
 
     if (!storedOrders) {
 
@@ -255,7 +234,7 @@ function initializeStorage() {
 
     }
 
-}
+
 
 
 function loadData() {

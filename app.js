@@ -1992,199 +1992,129 @@ function renderCheckoutSummary() {
 }
 
 
-function handleCheckoutSubmit(event) {
+/* =========================================================
+   CHECKOUT & FIREBASE SAVING
+========================================================= */
 
+async function handleCheckoutSubmit(event) {
     event.preventDefault();
-
 
     clearFormErrors();
 
-
     if (!cart.length) {
-
         showToast(
             "السلة فاضية",
             "warning"
         );
-
         return;
-
     }
 
-
-    const name =
-        $("#customerName")?.value.trim();
-
-    const phone =
-        $("#customerPhone")?.value.trim();
-
-    const address =
-        $("#customerAddress")?.value.trim();
-
-    const notes =
-        $("#customerNotes")?.value.trim();
-
+    const name = $("#customerName")?.value.trim();
+    const phone = $("#customerPhone")?.value.trim();
+    const address = $("#customerAddress")?.value.trim();
+    const notes = $("#customerNotes")?.value.trim();
 
     let valid = true;
 
-
     if (!name || name.length < 3) {
-
         showFieldError(
             "customerName",
             "اكتب الاسم بالكامل"
         );
-
         valid = false;
-
     }
 
-
     if (!validateEgyptianPhone(phone)) {
-
         showFieldError(
             "customerPhone",
             "اكتب رقم موبايل مصري صحيح"
         );
-
         valid = false;
-
     }
 
-
     if (!address || address.length < 5) {
-
         showFieldError(
             "customerAddress",
             "اكتب العنوان بالتفصيل"
         );
-
         valid = false;
-
     }
 
-
     if (!valid) {
-
         showToast(
             "راجع البيانات المطلوبة",
             "error"
         );
-
         return;
-
     }
 
+    const order = createOrder({
+        name,
+        phone,
+        address,
+        notes
+    });
 
-    const order =
-        createOrder({
-            name,
-            phone,
-            address,
-            notes
-        });
-
-
-    saveOrder(order);
-
+    // حفظ الطلب في سحابة Firebase مباشرة
+    try {
+        await window.addDoc(window.collection(window.db, "orders"), order);
+        console.log("Order saved to Firebase successfully!");
+    } catch (error) {
+        console.error("Error saving order to Firebase: ", error);
+        showToast("حدث خطأ أثناء حفظ الطلب، جرب مرة أخرى", "error");
+        return;
+    }
 
     cart = [];
-
     saveCart();
-
     renderCart();
-
     updateCartCount();
-
 
     event.target.reset();
 
-
     closeModal("#checkoutModal");
-
 
     showOrderSuccess(order);
 
-
     renderAdmin();
-
 }
 
 
 function createOrder(customer) {
+    const orderId = generateOrderId();
 
-    const orderId =
-        generateOrderId();
+    const orderProducts = cart
+        .map(item => {
+            const product = products.find(
+                p => p.id === item.productId
+            );
 
+            if (!product) {
+                return null;
+            }
 
-    const orderProducts =
-        cart
-            .map(item => {
-
-                const product =
-                    products.find(
-                        p => p.id === item.productId
-                    );
-
-
-                if (!product) {
-                    return null;
-                }
-
-
-                return {
-
-                    productId: product.id,
-
-                    name: product.name,
-
-                    price: product.price,
-
-                    quantity: item.quantity,
-
-                    total:
-                        product.price *
-                        item.quantity
-
-                };
-
-            })
-            .filter(Boolean);
-
+            return {
+                productId: product.id,
+                name: product.name,
+                price: product.price,
+                quantity: item.quantity,
+                total: product.price * item.quantity
+            };
+        })
+        .filter(Boolean);
 
     return {
-
         orderId,
-
-        date:
-            new Date().toISOString(),
-
-        customerName:
-            customer.name,
-
-        phone:
-            customer.phone,
-
-        address:
-            customer.address,
-
-        notes:
-            customer.notes,
-
-        products:
-            orderProducts,
-
-        total:
-            calculateCartTotal(),
-
-        status:
-            "New"
-
+        date: new Date().toISOString(),
+        customerName: customer.name,
+        phone: customer.phone,
+        address: customer.address,
+        notes: customer.notes,
+        products: orderProducts,
+        total: calculateCartTotal(),
+        status: "New"
     };
-
 }
-
-
 function saveOrder(order) {
 
     orders.unshift(order);

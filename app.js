@@ -2443,91 +2443,66 @@ function switchAdminView(view) {
 
 
 /* =========================================================
-   ADMIN RENDER
+   ADMIN RENDER (FIREBASE CONNECTED)
 ========================================================= */
 
-function renderAdmin() {
+// دالة جلب الطلبات من فايربيز وتحديث الشاشة
+async function renderAdmin() {
+    try {
+        // بنسحب كل الطلبات من مجموعة "orders" في قاعدة البيانات سحابياً
+        const querySnapshot = await window.getDocs(window.collection(window.db, "orders"));
+        orders = [];
+        querySnapshot.forEach((doc) => {
+            orders.push({ id: doc.id, ...doc.data() });
+        });
+    } catch (error) {
+        console.error("Error fetching orders from Firebase: ", error);
+    }
 
     renderAdminStats();
-
     renderAdminProducts();
-
     renderAdminOrders();
-
     renderAdminOrdersPreview();
-
     updateAdminNewOrders();
-
 }
 
 
 function renderAdminStats() {
-
-    const totalProducts =
-        $("#statProducts");
-
-    const totalOrders =
-        $("#statOrders");
-
-    const newOrders =
-        $("#statNewOrders");
-
+    const totalProducts = $("#statProducts");
+    const totalOrders = $("#statOrders");
+    const newOrders = $("#statNewOrders");
 
     if (totalProducts) {
-
-        totalProducts.textContent =
-            products.length;
-
+        totalProducts.textContent = products.length;
     }
-
 
     if (totalOrders) {
-
-        totalOrders.textContent =
-            orders.length;
-
+        totalOrders.textContent = orders.length;
     }
-
 
     if (newOrders) {
-
-        newOrders.textContent =
-            orders.filter(
-                order => order.status === "New"
-            ).length;
-
+        newOrders.textContent = orders.filter(
+            order => order.status === "New" || order.status === "جديد"
+        ).length;
     }
-
 }
 
 
 function updateAdminNewOrders() {
+    const count = orders.filter(
+        order => order.status === "New" || order.status === "جديد"
+    ).length;
 
-    const count =
-        orders.filter(
-            order => order.status === "New"
-        ).length;
-
-
-    const element =
-        $("#adminNewOrdersCount");
-
+    const element = $("#adminNewOrdersCount");
 
     if (element) {
-
-        element.textContent =
-            count;
-
+        element.textContent = count;
         element.style.display =
             count > 0
                 ? "inline-flex"
                 : "none";
-
     }
-
 }
-
-
 /* =========================================================
    ADMIN PRODUCTS
 ========================================================= */

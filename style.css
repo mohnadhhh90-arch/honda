@@ -10,20 +10,20 @@
 ========================================================= */
 
 :root {
-    --black: #4f9ff4;
-    --black-soft: #4f9ff4;
+    --black: #070707;
+    --black-soft: #0b0b0b;
     --charcoal: #111111;
     --charcoal-light: #181818;
-    --gray-dark: #ffffff;
-    --gray: #ffffff;
-    --gray-light: #ffffff;
+    --gray-dark: #222222;
+    --gray: #777777;
+    --gray-light: #a5a5a5;
 
     --white: #ffffff;
     --white-soft: #eeeeee;
 
-    --gold: #4f9ff4;
-    --gold-light: #4f9ff4;
-    --gold-dark: #4f9ff4;
+    --gold: #a57110;
+    --gold-light: #dfc27c;
+    --gold-dark: #9d7b3d;
 
     --success: #3fcf8e;
     --danger: #e45d5d;
